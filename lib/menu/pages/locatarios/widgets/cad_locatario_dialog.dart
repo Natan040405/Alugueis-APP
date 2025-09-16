@@ -151,7 +151,7 @@ class _CadLocatarioDialogState extends State<CadLocatarioDialog> {
               temPet: selecionado ?? 0,
             );
             existe ? 
-            widget.store.updateLocatario(novoLocatario.cpf, novoLocatario)
+            widget.store.updateLocatario(novoLocatario)
             : widget.store.addLocatario(novoLocatario);
             Navigator.pop(context);
           },

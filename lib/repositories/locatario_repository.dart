@@ -7,9 +7,9 @@ import 'package:http/http.dart';
 
 class LocatarioRepository {
   final client = Client();
-
+  final uriLocatario = Uri.parse('https://localhost:7052/api/Locatarios').toString();
   Future<List<Locatario>> getLocatarios() async {
-    final response = await client.get(Uri.parse('https://localhost:7052/api/Locatarios'));
+    final response = await client.get(Uri.parse(uriLocatario));
     final jsonRaw = response.body;
     return parseLocatarios(jsonRaw);
   }
@@ -17,7 +17,7 @@ class LocatarioRepository {
   Future addLocatario(Locatario locatario) async {
     String json = parseJson(locatario);
     final response = await client.post(
-      Uri.parse('https://localhost:7052/api/Locatarios'), 
+      Uri.parse(uriLocatario), 
       headers: {
       "Content-Type": "application/json; charset=UTF-8",
       },
@@ -28,13 +28,13 @@ class LocatarioRepository {
   }
 
   Future deleteLocatario(String cpf) async{
-    await client.delete(Uri.parse('https://localhost:7052/api/Locatarios/' + cpf));
+    await client.delete(Uri.parse(uriLocatario + cpf));
   }
 
-  Future updateLocatario(String cpf, Locatario locatarioAtualizado) async {
+  Future updateLocatario(Locatario locatarioAtualizado) async {
     String json = parseJson(locatarioAtualizado);
     final response = await client.put(
-      Uri.parse('https://localhost:7052/api/Locatarios/' + cpf),
+      Uri.parse(uriLocatario + locatarioAtualizado.cpf),
       headers: {
       "Content-Type": "application/json; charset=UTF-8",
       },

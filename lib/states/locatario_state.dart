@@ -12,19 +12,18 @@ class LocatarioState {
     });
 
   factory LocatarioState.init(){
-    return LocatarioState(locatarios: [], result: '', locatario: Locatario.init());
+    return LocatarioState(locatarios: [], locatario: Locatario.init(), result: '');
   }
 
   LocatarioState copyWith({
     List<Locatario>? locatarios,
-    String? result,
     Locatario? locatario,
+    String? result,
   }){
     return LocatarioState(
       locatarios: locatarios ?? this.locatarios,
-      result: result ?? this.result,
       locatario: locatario ?? this.locatario,
+      result: result ?? this.result,
     );
   }
-
 }

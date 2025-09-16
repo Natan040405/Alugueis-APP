@@ -1,5 +1,3 @@
-// ignore_for_file: non_constant_identifier_names
-
 import 'package:alugueis_app/models/locatario.dart';
 import 'package:alugueis_app/repositories/locatario_repository.dart';
 import 'package:alugueis_app/states/locatario_state.dart';
@@ -27,8 +25,8 @@ class LocatarioStore extends ValueNotifier<LocatarioState> {
     getLocatarios();
   }
 
-  Future<void> updateLocatario(String cpf, Locatario locatarioAtualizado) async {
-    await repository.updateLocatario(cpf, locatarioAtualizado);
+  Future<void> updateLocatario(Locatario locatarioAtualizado) async {
+    await repository.updateLocatario( locatarioAtualizado);
     getLocatarios();
   }
 }
