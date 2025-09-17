@@ -34,7 +34,7 @@ class LocatarioRepository {
   Future updateLocatario(Locatario locatarioAtualizado) async {
     String json = parseJson(locatarioAtualizado);
     final response = await client.put(
-      Uri.parse(uriLocatario + locatarioAtualizado.cpf),
+      Uri.parse(uriLocatario),
       headers: {
       "Content-Type": "application/json; charset=UTF-8",
       },
@@ -49,18 +49,15 @@ class LocatarioRepository {
     final locatarios = (json as List).map((loc) => Locatario.fromJson(loc)).toList();
     return locatarios;
   }
+
   Locatario parseLocatario(String jsonRaw){
     final json = jsonDecode(jsonRaw);
     final locatario = Locatario.fromJson(json);
     return locatario;
   }
 
-
   String parseJson(Locatario locatario){
     String json = jsonEncode(locatario.toJson());
     return json;
   }
-
-
-
 }

@@ -31,7 +31,7 @@ class PredioRepository {
   Future<Predio> updatePredio(Predio predioAtualizado) async {
     final json = parseJson(predioAtualizado);
     final response = await client.post(
-      Uri.parse(uriPredio + predioAtualizado.codPredio.toString()),
+      Uri.parse(uriPredio),
       headers: {"Content-Type": "application/json; charset=UTF-8"},
       body: json
     );
