@@ -6,7 +6,7 @@ class Apto {
   final int andar;
   final int qtdQuartos;
   final int qtdBanheiros;
-  final double MetrosQuadrados;
+  final double metrosQuadrados;
 
   const Apto({
     required this.codApto,
@@ -14,6 +14,27 @@ class Apto {
     required this.andar,
     required this.qtdQuartos,
     required this.qtdBanheiros,
-    required this.MetrosQuadrados,
+    required this.metrosQuadrados,
   });
+
+  factory Apto.init(){
+    return Apto(
+      codApto: 0,
+      codPredio: null,
+      andar: 0,
+      qtdQuartos: 0,
+      qtdBanheiros: 0,
+      metrosQuadrados: 0, 
+    );
+  }
+
+  @override
+  List<Object?> get props => [
+    codApto,
+    codPredio,
+    andar,
+    qtdQuartos,
+    qtdBanheiros,
+    metrosQuadrados,
+  ];
 }

@@ -1,16 +1,18 @@
 import 'dart:convert';
 
 import 'package:alugueis_app/models/predio.dart';
+import 'package:alugueis_app/repositories/repository_helper.dart';
 import 'package:http/http.dart';
 
 class PredioRepository {
+  final repositoryHelper = RepositoryHelper();
   final client = Client();
-  final uriPredio = Uri.parse('https://localhost:7052/api/Predios').toString();
+  final uriPredio = 'https://localhost:7052/api/Predios/';
 
   Future<List<Predio>> getPredios() async {
   final response = await client.get(Uri.parse(uriPredio));
   final jsonRaw = response.body;
-  return parsePredios(jsonRaw);
+  return repositoryHelper.parseListT<Predio>(jsonRaw, Predio.fromJson);
   }
 
   Future<Predio> addPredio(Predio predio) async {
@@ -30,7 +32,7 @@ class PredioRepository {
 
   Future<Predio> updatePredio(Predio predioAtualizado) async {
     final json = parseJson(predioAtualizado);
-    final response = await client.post(
+    final response = await client.put(
       Uri.parse(uriPredio),
       headers: {"Content-Type": "application/json; charset=UTF-8"},
       body: json
@@ -48,11 +50,5 @@ class PredioRepository {
   String parseJson(Predio predio){
     final json = jsonEncode(predio.toJson());
     return json;
-  }
-
-  List<Predio> parsePredios(String jsonRaw){
-    final json = jsonDecode(jsonRaw);
-    final predios = (json as List).map((p) => Predio.fromJson(p)).toList();
-    return predios;
   }
 }

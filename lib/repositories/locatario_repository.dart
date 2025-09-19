@@ -3,15 +3,19 @@
 import 'dart:convert';
 
 import 'package:alugueis_app/models/locatario.dart';
+import 'package:alugueis_app/repositories/repository_helper.dart';
 import 'package:http/http.dart';
 
 class LocatarioRepository {
+  final repositoryHelper = RepositoryHelper();
   final client = Client();
-  final uriLocatario = Uri.parse('https://localhost:7052/api/Locatarios').toString();
+  final uriLocatario = 'https://localhost:7052/api/Locatarios/';
+
+
   Future<List<Locatario>> getLocatarios() async {
     final response = await client.get(Uri.parse(uriLocatario));
     final jsonRaw = response.body;
-    return parseLocatarios(jsonRaw);
+    return repositoryHelper.parseListT<Locatario>(jsonRaw, Locatario.fromJson);
   }
 
   Future addLocatario(Locatario locatario) async {
@@ -24,7 +28,7 @@ class LocatarioRepository {
       body: json
       );
       final jsonRaw = response.body;
-      return parseLocatario(jsonRaw);
+      return repositoryHelper.parseT<Locatario>(jsonRaw, Locatario.fromJson);
   }
 
   Future deleteLocatario(String cpf) async{
@@ -41,19 +45,7 @@ class LocatarioRepository {
       body: json 
     );
     final jsonRaw = response.body;
-    return parseLocatario(jsonRaw);
-  }
-
-  List<Locatario> parseLocatarios(String jsonRaw){
-    final json = jsonDecode(jsonRaw);
-    final locatarios = (json as List).map((loc) => Locatario.fromJson(loc)).toList();
-    return locatarios;
-  }
-
-  Locatario parseLocatario(String jsonRaw){
-    final json = jsonDecode(jsonRaw);
-    final locatario = Locatario.fromJson(json);
-    return locatario;
+    return repositoryHelper.parseT<Locatario>(jsonRaw, Locatario.fromJson);
   }
 
   String parseJson(Locatario locatario){
