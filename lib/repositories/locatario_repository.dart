@@ -1,9 +1,7 @@
 // ignore_for_file: prefer_interpolation_to_compose_strings
 
-import 'dart:convert';
-
 import 'package:alugueis_app/models/locatario.dart';
-import 'package:alugueis_app/repositories/repository_helper.dart';
+import 'package:alugueis_app/repositories/helper/repository_helper.dart';
 import 'package:http/http.dart';
 
 class LocatarioRepository {
@@ -19,7 +17,7 @@ class LocatarioRepository {
   }
 
   Future addLocatario(Locatario locatario) async {
-    String json = parseJson(locatario);
+    String json = repositoryHelper.parseToJson(locatario);
     final response = await client.post(
       Uri.parse(uriLocatario), 
       headers: {
@@ -36,7 +34,7 @@ class LocatarioRepository {
   }
 
   Future updateLocatario(Locatario locatarioAtualizado) async {
-    String json = parseJson(locatarioAtualizado);
+    String json = repositoryHelper.parseToJson(locatarioAtualizado);
     final response = await client.put(
       Uri.parse(uriLocatario),
       headers: {
@@ -46,10 +44,5 @@ class LocatarioRepository {
     );
     final jsonRaw = response.body;
     return repositoryHelper.parseT<Locatario>(jsonRaw, Locatario.fromJson);
-  }
-
-  String parseJson(Locatario locatario){
-    String json = jsonEncode(locatario.toJson());
-    return json;
   }
 }

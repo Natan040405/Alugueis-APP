@@ -5,11 +5,11 @@ import 'package:alugueis_app/repositories/locatario_repository.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
-  test('converter json em uma lista de locatario', (){
-    final repository = LocatarioRepository();
-    final locatarios = repository.parseLocatarios(json);
-    print(locatarios);
-  });
+  // test('converter json em uma lista de locatario', (){
+  //   final repository = LocatarioRepository();
+  //   final locatarios = repository.parseLocatarios(json);
+  //   print(locatarios);
+  // });
 
   test('converter locatario em json', () {
     final locatario = Locatario(

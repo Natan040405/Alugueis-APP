@@ -1,8 +1,9 @@
 // ignore_for_file: unnecessary_this
 
+import 'package:alugueis_app/repositories/helper/json_serializable.dart';
 import 'package:equatable/equatable.dart';
 
-class Locatario extends Equatable{
+class Locatario extends Equatable implements JsonSerializable{
   final int idade;
   final int temPet;
   final int qtdDependentes;

@@ -55,7 +55,7 @@ class _CadLocatarioDialogState extends State<CadLocatarioDialog> {
             icon: Icon(Icons.close)
           ),
         ]
-        ),
+      ),
       content: SizedBox(
         width: 750,
         child: Column(

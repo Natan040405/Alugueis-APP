@@ -1,19 +1,21 @@
 // ignore_for_file: non_constant_identifier_names
 
 import 'package:alugueis_app/models/apto.dart';
+import 'package:alugueis_app/repositories/helper/json_serializable.dart';
+import 'package:equatable/equatable.dart';
 
-class Predio {
+class Predio extends Equatable implements JsonSerializable{
   final int codPredio;
   final int qtdAndares;
   final String endereco;
   final String nomePredio;
-  final Apto? apto;
-  const Predio({
+  final List<Apto>? aptos;
+  Predio({
     required this.codPredio,
     required this.qtdAndares,
     required this.endereco,
     required this.nomePredio,
-    this.apto
+    this.aptos
   });
 
   factory Predio.fromJson(Map<String, dynamic> json){
@@ -22,7 +24,7 @@ class Predio {
       qtdAndares: json['qtdAndares'],
       endereco: json['endereco'],
       nomePredio: json['nomePredio'],
-      apto: json['apto']
+      aptos: json['aptos']
     );
   }
 
