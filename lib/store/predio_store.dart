@@ -28,4 +28,9 @@ class PredioStore extends ValueNotifier<PredioState>{
     await repository.updatePredio(predioAtualizado);
     getPredios();
   }
+
+  Future<Predio> getPredioById(int? codPredio) async {
+    Predio predio = await repository.getPredioById(codPredio);
+    return predio;
+  }
 }

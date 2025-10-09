@@ -34,6 +34,7 @@ class Predio extends Equatable implements JsonSerializable{
       'qtdAndares': this.qtdAndares,
       'endereco': this.endereco,
       'nomePredio': this.nomePredio,
+      'aptos': this.aptos
     };
   }
 
@@ -43,6 +44,7 @@ class Predio extends Equatable implements JsonSerializable{
       qtdAndares: 0,
       endereco: "",
       nomePredio: "",
+      aptos: null,
     );
   }
 
@@ -52,5 +54,6 @@ class Predio extends Equatable implements JsonSerializable{
     qtdAndares,
     endereco,
     nomePredio,
+    aptos,
   ];
 }

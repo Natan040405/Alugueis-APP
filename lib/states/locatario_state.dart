@@ -12,7 +12,11 @@ class LocatarioState {
     });
 
   factory LocatarioState.init(){
-    return LocatarioState(locatarios: [], locatario: Locatario.init(), result: '');
+    return LocatarioState(
+      locatarios: [], 
+      locatario: Locatario.init(), 
+      result: '',
+    );
   }
 
   LocatarioState copyWith({

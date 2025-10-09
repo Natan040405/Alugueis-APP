@@ -1,7 +1,6 @@
 import 'package:alugueis_app/components/datagrid_delete_button.dart';
 import 'package:alugueis_app/components/datagrid_edit_button.dart';
 import 'package:alugueis_app/menu/pages/aptos/widgets/cad_apto_dialog.dart';
-import 'package:alugueis_app/states/predio_state.dart';
 import 'package:alugueis_app/store/apto_store.dart';
 import 'package:alugueis_app/store/predio_store.dart';
 import 'package:flutter/material.dart';
@@ -77,7 +76,7 @@ class _AptoListState extends State<AptoList> {
                         ],
                       )),
                       DataCell(Text(apto.codApto.toString())),
-                      DataCell(Text(apto.codPredio.toString())),
+                      DataCell(Text(apto.codPredio.toString() + ' - ' + apto.nomePredio.toString())),
                       DataCell(Text(apto.andar.toString())),
                       DataCell(Text(apto.qtdBanheiros.toString())),
                       DataCell(Text(apto.qtdQuartos.toString())),

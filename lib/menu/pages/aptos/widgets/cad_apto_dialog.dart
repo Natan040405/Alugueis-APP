@@ -100,10 +100,72 @@ class _CadAptoDialogState extends State<CadAptoDialog> {
                   ) 
                 )
               ]
+            ),
+            const SizedBox(height: 16,),
+            Row(
+              children: [
+                Expanded(
+                  child: TextField(
+                    controller: qtdBanheirosController,
+                    decoration: InputDecoration(labelText: "Quantidade Banheiros*"),
+                    keyboardType: TextInputType.number,
+                    inputFormatters: [
+                      FilteringTextInputFormatter.digitsOnly
+                    ],
+                  )
+                ),
+                const SizedBox(width: 16,),
+                Expanded(
+                  child: TextField(
+                    controller: qtdQuartosController,
+                    decoration: InputDecoration(labelText: "Quantidade Quartos"),
+                    keyboardType: TextInputType.number,
+                    inputFormatters: [
+                      FilteringTextInputFormatter.digitsOnly
+                    ],
+                  )
+                ),
+                const SizedBox(width: 16,),
+                Expanded(
+                  child: TextField(
+                    controller: metrosQuadradosController,
+                    decoration: InputDecoration(labelText: "Metros Quadrados"),
+                    keyboardType: TextInputType.number,
+                    inputFormatters: [
+                      FilteringTextInputFormatter.digitsOnly
+                    ],
+                  )
+                )
+              ],
             )
           ],
         )
       ),
+      actions: [
+        TextButton(
+          onPressed: (){
+            Navigator.pop(context);
+          },
+          child: const Text("cancelar")
+        ),
+        ElevatedButton(
+          onPressed: () {
+            Apto novoApto = Apto(
+              codApto: int.tryParse(codAptoController.text) ?? 0,
+              codPredio: predioSelecionado,
+              andar: int.tryParse(andarController.text) ?? 0,
+              qtdBanheiros: int.tryParse(qtdBanheirosController.text) ?? 0,
+              qtdQuartos: int.tryParse(qtdQuartosController.text) ?? 0,
+              metrosQuadrados: int.tryParse(metrosQuadradosController.text) ?? 0,
+            );
+            existe ?
+            widget.store.updateApto(novoApto)
+            : widget.store.addApto(novoApto);
+            Navigator.pop(context);
+          },
+          child: const Text("Salvar")
+        )
+      ],
     );
   }
 }

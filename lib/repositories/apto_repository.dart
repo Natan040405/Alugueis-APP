@@ -5,7 +5,7 @@ import 'package:http/http.dart';
 class AptoRepository {
   final repositoryHelper = RepositoryHelper();
   final client = Client(); 
-  final uriApto = 'https://localhost:7052/api/Aptos/';
+  final uriApto = 'https://localhost:7052/api/Apto/';
 
   Future<List<Apto>> getAptos() async {
     final response = await client.get(Uri.parse(uriApto));
@@ -17,6 +17,7 @@ class AptoRepository {
     final json = repositoryHelper.parseToJson(apto);
     final response = await client.post(
       Uri.parse(uriApto),
+      headers: {'Content-Type': 'application/json'},
       body: json  
     );
     final jsonRaw = response.body;

@@ -7,7 +7,7 @@ import 'package:http/http.dart';
 class LocatarioRepository {
   final repositoryHelper = RepositoryHelper();
   final client = Client();
-  final uriLocatario = 'https://localhost:7052/api/Locatarios/';
+  final uriLocatario = 'https://localhost:7052/api/Locatario/';
 
 
   Future<List<Locatario>> getLocatarios() async {

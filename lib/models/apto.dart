@@ -9,7 +9,8 @@ class Apto extends Equatable implements JsonSerializable{
   final int andar;
   final int qtdQuartos;
   final int qtdBanheiros;
-  final double metrosQuadrados;
+  final int metrosQuadrados;
+  final String? nomePredio;
   Apto({
     required this.codApto,
     this.codPredio,
@@ -17,6 +18,7 @@ class Apto extends Equatable implements JsonSerializable{
     required this.qtdQuartos,
     required this.qtdBanheiros,
     required this.metrosQuadrados,
+    this.nomePredio,
   });
 
   factory Apto.fromJson(Map<String, dynamic> json){
@@ -27,6 +29,7 @@ class Apto extends Equatable implements JsonSerializable{
       qtdQuartos: json['qtdQuartos'],
       qtdBanheiros: json['qtdBanheiros'],
       metrosQuadrados: json['metrosQuadrados'],
+      nomePredio: json['nomePredio']
     );
   }
 
@@ -37,7 +40,7 @@ class Apto extends Equatable implements JsonSerializable{
       'andar': andar,
       'qtdQuartos': qtdQuartos,
       'qtdBanheiros': qtdBanheiros,
-      'metrosQuadrados': metrosQuadrados
+      'metrosQuadrados': metrosQuadrados,
     };
   }
 
@@ -48,7 +51,7 @@ class Apto extends Equatable implements JsonSerializable{
       andar: 0,
       qtdQuartos: 0,
       qtdBanheiros: 0,
-      metrosQuadrados: 0, 
+      metrosQuadrados: 0,
     );
   }
 

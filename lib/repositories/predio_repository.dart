@@ -6,7 +6,7 @@ import 'package:http/http.dart';
 class PredioRepository {
   final repositoryHelper = RepositoryHelper();
   final client = Client();
-  final uriPredio = 'https://localhost:7052/api/Predios/';
+  final uriPredio = 'https://localhost:7052/api/Predio/';
 
   Future<List<Predio>> getPredios() async {
   final response = await client.get(Uri.parse(uriPredio));
@@ -38,5 +38,13 @@ class PredioRepository {
     );
     final jsonRaw = response.body;
     return repositoryHelper.parseT<Predio>(jsonRaw, Predio.fromJson);
+  }
+
+  Future<Predio> getPredioById(int? codPredio) async {
+    final response = await client.get(
+      Uri.parse(uriPredio + codPredio.toString())
+    );
+    final jsonRaw = response.body;
+    return repositoryHelper.parseT(jsonRaw, Predio.fromJson);
   }
 }
