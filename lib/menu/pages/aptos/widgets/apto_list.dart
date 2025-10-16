@@ -64,7 +64,10 @@ class _AptoListState extends State<AptoList> {
                             onPressed: () {
                               showDialog(
                                 context: context,
-                                builder: (_) => CadAptoDialog(store: widget.store, apto: apto, predioStore: widget.predioStore,)
+                                builder: (_) => CadAptoDialog(store: widget.store,
+                                                              apto: apto, 
+                                                              predioStore: widget.predioStore,
+                                                              )
                               );
                             },
                           ),

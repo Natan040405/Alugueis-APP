@@ -32,6 +32,7 @@ class TipoDespesaRepository {
     final json = repositoryHelper.parseToJson(tipoDespesaAtualizado);
     final response = await client.put(
       Uri.parse(uriTipoDespesa),
+      headers: {'Content-Type': 'application/json'},
       body: json
     );
     final jsonRaw = response.body;
