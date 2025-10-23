@@ -1,4 +1,4 @@
-import 'package:alugueis_app/login/page.dart';
+import 'package:alugueis_app/pages/login/page.dart';
 import 'package:alugueis_app/theme/theme.dart';
 import 'package:flutter/material.dart';
 
