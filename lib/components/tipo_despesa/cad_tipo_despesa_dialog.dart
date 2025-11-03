@@ -23,8 +23,8 @@ class _CadTipoDespesaDialogState extends State<CadTipoDespesaDialog> {
   @override
   void initState(){
     super.initState();
-    codTipoController.text = widget.tipoDespesa?.codTipo.toString() ?? "";
-    nomeTipoController.text = widget.tipoDespesa?.nomeTipo ?? "";
+    codTipoController.text = widget.tipoDespesa?.codTipoDespesa.toString() ?? "";
+    nomeTipoController.text = widget.tipoDespesa?.nomeTipoDespesa ?? "";
     selecionado = widget.tipoDespesa?.compartilhado ?? null;
     if(widget.tipoDespesa != null){
       existe = true;
@@ -81,8 +81,8 @@ class _CadTipoDespesaDialogState extends State<CadTipoDespesaDialog> {
         ),
         ElevatedButton(onPressed: () {
           TipoDespesa novoTipoDespesa = TipoDespesa(
-            codTipo: int.tryParse(codTipoController.text) ?? 0, 
-            nomeTipo: nomeTipoController.text, 
+            codTipoDespesa: int.tryParse(codTipoController.text) ?? 0, 
+            nomeTipoDespesa: nomeTipoController.text, 
             compartilhado: selecionado ?? 0,
           );
           existe ? 

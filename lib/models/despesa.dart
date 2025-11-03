@@ -9,12 +9,16 @@ class Despesa extends Equatable implements JsonSerializable{
   final String? nomeTipoDespesa;
   final double vlrTotalDespesa;
   final DateTime dataDespesa;
+  final DateTime competenciaMes;
+  final int compartilhado;
   const Despesa({
     required this.codDespesa,
     this.codTipoDespesa,
     this.nomeTipoDespesa,
     required this.vlrTotalDespesa,
     required this.dataDespesa,
+    required this.competenciaMes,
+    required this.compartilhado
   });
 
   factory Despesa.fromJson(Map<String, dynamic> json){
@@ -23,7 +27,9 @@ class Despesa extends Equatable implements JsonSerializable{
       codTipoDespesa: json['codTipoDespesa'],
       nomeTipoDespesa: json['nomeTipoDespesa'],
       vlrTotalDespesa: json['vlrTotalDespesa'],
-      dataDespesa: json['dataDespesa']
+      dataDespesa: json['dataDespesa'],
+      competenciaMes: json['competenciaMes'],
+      compartilhado: json['compartilhado']
     );
   }
 
@@ -32,7 +38,9 @@ class Despesa extends Equatable implements JsonSerializable{
       'codDespesa': codDespesa,
       'codTipoDespesa': codTipoDespesa,
       'vlrTotalDespesa': vlrTotalDespesa,
-      'dataDespesa': dataDespesa
+      'dataDespesa': dataDespesa,
+      'competenciaMes': competenciaMes,
+      'compartilhado': compartilhado
     };
   }
 
@@ -41,7 +49,9 @@ class Despesa extends Equatable implements JsonSerializable{
       codDespesa: 0,
       codTipoDespesa: null,
       vlrTotalDespesa: 0.0,
-      dataDespesa: DateTime.now()
+      dataDespesa: DateTime.now(),
+      competenciaMes: DateTime.now(),
+      compartilhado: 0
     );
   }
 
@@ -51,5 +61,7 @@ class Despesa extends Equatable implements JsonSerializable{
     codTipoDespesa,
     vlrTotalDespesa,
     dataDespesa,
+    competenciaMes,
+    compartilhado
   ];
 }

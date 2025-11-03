@@ -5,7 +5,7 @@ import 'package:http/http.dart';
 class DespesaRepository {
   final repositoryHelper = RepositoryHelper();
   final client = Client();
-  final uriDespesa = 'https://localhost:7052/api/Despesa/';
+  final uriDespesa = 'https://localhost:7052/api/DespesaApto/';
 
   Future<List<Despesa>> getDespesas() async {
     final response = await client.get(Uri.parse(uriDespesa));

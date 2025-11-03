@@ -68,15 +68,15 @@ class _TipoDespesaListState extends State<TiposDespesaList>{
                               const SizedBox(width: 16),
                               DatagridDeleteButton(
                                 onPressed: (){
-                                  widget.store.deleteTipoDespesa(tipoDespesa.codTipo);
+                                  widget.store.deleteTipoDespesa(tipoDespesa.codTipoDespesa);
                                 },
                               )
                             ],
                           ),
                       )
                       ),
-                      DataCell(Text(tipoDespesa.codTipo.toString())),
-                      DataCell(Text(tipoDespesa.nomeTipo)),
+                      DataCell(Text(tipoDespesa.codTipoDespesa.toString())),
+                      DataCell(Text(tipoDespesa.nomeTipoDespesa)),
                       DataCell(Text(tipoDespesa.compartilhado == 1 ? 'Sim' : 'Não'))
                     ]
                   );  

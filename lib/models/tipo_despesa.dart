@@ -2,43 +2,43 @@ import 'package:alugueis_app/repositories/helper/json_serializable.dart';
 import 'package:equatable/equatable.dart';
 
 class TipoDespesa extends Equatable implements JsonSerializable{
-  final int codTipo;
-  final String nomeTipo;
+  final int codTipoDespesa;
+  final String nomeTipoDespesa;
   final int compartilhado;
   TipoDespesa({
-    required this.codTipo,
-    required this.nomeTipo,
+    required this.codTipoDespesa,
+    required this.nomeTipoDespesa,
     required this.compartilhado,
   });
 
   factory TipoDespesa.fromJson(Map<String, dynamic> json){
     return TipoDespesa(
-      codTipo: json["codTipo"],
-      nomeTipo: json["nomeTipo"],
+      codTipoDespesa: json["codTipoDespesa"],
+      nomeTipoDespesa: json["nomeTipoDespesa"],
       compartilhado: json["compartilhado"],
     );
   }
 
   Map<String, dynamic> toJson(){
     return {
-      "codTipo": codTipo,
-      "nomeTipo": nomeTipo,
+      "codTipoDespesa": codTipoDespesa,
+      "nomeTipoDespesa": nomeTipoDespesa,
       "compartilhado": compartilhado,
     };
   }
 
   factory TipoDespesa.init(){
     return TipoDespesa(
-      codTipo: 0,
-      nomeTipo: "",
+      codTipoDespesa: 0,
+      nomeTipoDespesa: "",
       compartilhado: 0,
     );
   }
 
   @override
   List<Object?> get props => [
-    codTipo,
-    nomeTipo,
+    codTipoDespesa,
+    nomeTipoDespesa,
     compartilhado,
   ];
 }
