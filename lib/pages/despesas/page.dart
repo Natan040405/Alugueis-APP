@@ -13,7 +13,7 @@ class DespesaPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-      title: Text('Locatários'),
+      title: Text('Despesas'),
       ),
       body: Container(
         child: Column(

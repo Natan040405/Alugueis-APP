@@ -1,8 +1,11 @@
 import 'package:alugueis_app/pages/login/page.dart';
 import 'package:alugueis_app/theme/theme.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/date_symbol_data_local.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  initializeDateFormatting('pt_BR', null);
   runApp(const MyApp());
 }
 

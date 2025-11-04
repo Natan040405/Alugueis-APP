@@ -1,5 +1,7 @@
 // ignore_for_file: non_constant_identifier_names
 
+import 'dart:ffi';
+
 import 'package:alugueis_app/repositories/helper/json_serializable.dart';
 import 'package:equatable/equatable.dart';
 
@@ -26,9 +28,9 @@ class Despesa extends Equatable implements JsonSerializable{
       codDespesa: json['codDespesa'],
       codTipoDespesa: json['codTipoDespesa'],
       nomeTipoDespesa: json['nomeTipoDespesa'],
-      vlrTotalDespesa: json['vlrTotalDespesa'],
-      dataDespesa: json['dataDespesa'],
-      competenciaMes: json['competenciaMes'],
+      vlrTotalDespesa: (json['vlrTotalDespesa'] as num).toDouble(),
+      dataDespesa: DateTime.parse(json['dataDespesa']),
+      competenciaMes: DateTime.parse(json['competenciaMes']),
       compartilhado: json['compartilhado']
     );
   }

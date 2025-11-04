@@ -1,6 +1,7 @@
 import 'package:alugueis_app/components/datagrid_delete_button.dart';
 import 'package:alugueis_app/components/datagrid_edit_button.dart';
 import 'package:alugueis_app/components/despesa/cad_despesa_dialog.dart';
+import 'package:alugueis_app/helper.dart';
 import 'package:alugueis_app/store/despesa_store.dart';
 import 'package:alugueis_app/store/tipo_despesa_store.dart';
 import 'package:flutter/foundation.dart';
@@ -50,7 +51,9 @@ class _DespesaListState extends State<DespesaList> {
                   DataColumn(label: Text('Codigo')),
                   DataColumn(label: Text('Codigo Tipo Despesa')),
                   DataColumn(label: Text('Valor Despesa')),
-                  DataColumn(label: Text('Data'))
+                  DataColumn(label: Text('Data')),
+                  DataColumn(label: Text('Mês Competencia')),
+                  DataColumn(label: Text('Compartilhado'))
                 ],
                 rows: state.despesas.map((despesa) {
                   return DataRow(
@@ -80,8 +83,10 @@ class _DespesaListState extends State<DespesaList> {
                       ),
                       DataCell(Text(despesa.codDespesa.toString())),
                       DataCell(Text(despesa.codTipoDespesa.toString() + ' - ' + despesa.nomeTipoDespesa.toString())),
-                      DataCell(Text(despesa.vlrTotalDespesa.toString())),
-                      DataCell(Text(despesa.dataDespesa.toString())),
+                      DataCell(Text(Helper.formatDouble(despesa.vlrTotalDespesa))),
+                      DataCell(Text(Helper.formatDate(despesa.dataDespesa))),
+                      DataCell(Text(Helper.formatDate(despesa.competenciaMes, formato: 'MM/yyyy'))),
+                      DataCell(Text(despesa.compartilhado == 1 ? 'Sim' : 'Não'))
                     ]
                   );
                 }).toList(),
