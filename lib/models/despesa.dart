@@ -7,20 +7,22 @@ import 'package:equatable/equatable.dart';
 
 class Despesa extends Equatable implements JsonSerializable{
   final int codDespesa;
-  final int? codTipoDespesa;
+  final int codTipoDespesa;
   final String? nomeTipoDespesa;
+  final int? codApto;
   final double vlrTotalDespesa;
   final DateTime dataDespesa;
   final DateTime competenciaMes;
-  final int compartilhado;
+  final int? compartilhado;
   const Despesa({
     required this.codDespesa,
-    this.codTipoDespesa,
+    required this.codTipoDespesa,
     this.nomeTipoDespesa,
+    this.codApto,
     required this.vlrTotalDespesa,
     required this.dataDespesa,
     required this.competenciaMes,
-    required this.compartilhado
+    this.compartilhado
   });
 
   factory Despesa.fromJson(Map<String, dynamic> json){
@@ -28,6 +30,7 @@ class Despesa extends Equatable implements JsonSerializable{
       codDespesa: json['codDespesa'],
       codTipoDespesa: json['codTipoDespesa'],
       nomeTipoDespesa: json['nomeTipoDespesa'],
+      codApto: json['codApto'],
       vlrTotalDespesa: (json['vlrTotalDespesa'] as num).toDouble(),
       dataDespesa: DateTime.parse(json['dataDespesa']),
       competenciaMes: DateTime.parse(json['competenciaMes']),
@@ -39,21 +42,20 @@ class Despesa extends Equatable implements JsonSerializable{
     return{
       'codDespesa': codDespesa,
       'codTipoDespesa': codTipoDespesa,
+      'codApto': codApto,
       'vlrTotalDespesa': vlrTotalDespesa,
-      'dataDespesa': dataDespesa,
-      'competenciaMes': competenciaMes,
-      'compartilhado': compartilhado
+      'dataDespesa': dataDespesa.toIso8601String(),
+      'competenciaMes': competenciaMes.toIso8601String()
     };
   }
 
   factory Despesa.init(){
     return Despesa(
       codDespesa: 0,
-      codTipoDespesa: null,
+      codTipoDespesa: 0,
       vlrTotalDespesa: 0.0,
       dataDespesa: DateTime.now(),
-      competenciaMes: DateTime.now(),
-      compartilhado: 0
+      competenciaMes: DateTime.now()
     );
   }
 
@@ -61,6 +63,8 @@ class Despesa extends Equatable implements JsonSerializable{
   List<Object?> get props => [
     codDespesa,
     codTipoDespesa,
+    nomeTipoDespesa,
+    codApto,
     vlrTotalDespesa,
     dataDespesa,
     competenciaMes,

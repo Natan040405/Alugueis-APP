@@ -1,5 +1,6 @@
 import 'package:alugueis_app/components/despesa/cad_despesa_dialog.dart';
 import 'package:alugueis_app/components/despesa/despesa_list.dart';
+import 'package:alugueis_app/store/apto_store.dart';
 import 'package:alugueis_app/store/despesa_store.dart';
 import 'package:alugueis_app/store/tipo_despesa_store.dart';
 import 'package:flutter/material.dart';
@@ -7,6 +8,7 @@ import 'package:flutter/material.dart';
 class DespesaPage extends StatelessWidget {
   final store = DespesaStore();
   final tipoDespesaStore = TipoDespesaStore();
+  final aptoStore = AptoStore();
   DespesaPage({super.key});
 
   @override
@@ -18,7 +20,7 @@ class DespesaPage extends StatelessWidget {
       body: Container(
         child: Column(
           children: [
-            DespesaList(store: store, tipoDespesaStore: tipoDespesaStore,),
+            DespesaList(store: store, tipoDespesaStore: tipoDespesaStore, aptoStore: aptoStore,),
           ],
         ),
       ),
@@ -26,7 +28,7 @@ class DespesaPage extends StatelessWidget {
         onPressed: (){
           showDialog(
             context: context,
-            builder: (_) => CadDespesaDialog(store: store, tipoDespesaStore: tipoDespesaStore,),
+            builder: (_) => CadDespesaDialog(store: store, tipoDespesaStore: tipoDespesaStore, aptoStore: aptoStore,),
           );
         },
         child: const Icon(Icons.add)

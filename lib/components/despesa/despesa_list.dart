@@ -2,6 +2,7 @@ import 'package:alugueis_app/components/datagrid_delete_button.dart';
 import 'package:alugueis_app/components/datagrid_edit_button.dart';
 import 'package:alugueis_app/components/despesa/cad_despesa_dialog.dart';
 import 'package:alugueis_app/helper.dart';
+import 'package:alugueis_app/store/apto_store.dart';
 import 'package:alugueis_app/store/despesa_store.dart';
 import 'package:alugueis_app/store/tipo_despesa_store.dart';
 import 'package:flutter/foundation.dart';
@@ -10,7 +11,8 @@ import 'package:flutter/material.dart';
 class DespesaList extends StatefulWidget {
   final DespesaStore store;
   final TipoDespesaStore tipoDespesaStore;
-  const DespesaList({super.key, required this.store, required this.tipoDespesaStore});
+  final AptoStore aptoStore;
+  const DespesaList({super.key, required this.store, required this.tipoDespesaStore, required this.aptoStore});
 
   @override
   State<DespesaList> createState() => _DespesaListState();
@@ -69,6 +71,7 @@ class _DespesaListState extends State<DespesaList> {
                                   builder: (_) => CadDespesaDialog(store: widget.store,
                                                                 despesa: despesa, 
                                                                 tipoDespesaStore: widget.tipoDespesaStore,
+                                                                aptoStore: widget.aptoStore,
                                                                 )
                                 );
                               },
