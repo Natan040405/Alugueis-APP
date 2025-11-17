@@ -57,7 +57,7 @@ class _CadAptoDialogState extends State<CadAptoDialog> {
                   child: TextField(
                     controller: codAptoController,
                     decoration: InputDecoration(labelText: "codApto*"),
-
+                    enabled: !existe,
                   ),
                 ),
                 const SizedBox(width: 16,),

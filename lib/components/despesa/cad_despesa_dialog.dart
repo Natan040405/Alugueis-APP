@@ -159,6 +159,16 @@ class _CadDespesaDialogState extends State<CadDespesaDialog> {
                       inputFormatters: [
                         FilteringTextInputFormatter.allow(RegExp(r'[0-9.,]')),
                       ],
+                      onChanged: (value) {
+                        if (value.contains(',')) {
+                          final newValue = value.replaceAll(',', '.');
+                          // Atualiza o texto e mantém o cursor no final
+                          vlrTotalDespesaController.value = TextEditingValue(
+                            text: newValue,
+                            selection: TextSelection.collapsed(offset: newValue.length),
+                          );
+                        }
+                      }
                     ),
                   ),
                   const SizedBox(width: 16),
@@ -206,7 +216,7 @@ print('codeUnits: ${dataDespesaController.text.codeUnits}');
               codDespesa: int.tryParse(codDespesaController.text) ?? 0,
               codTipoDespesa: codTipoDespesa,
               codApto: aptoSelecionado,
-              vlrTotalDespesa: (int.tryParse(vlrTotalDespesaController.text) ?? 0 as num).toDouble(),
+              vlrTotalDespesa: (double.tryParse(vlrTotalDespesaController.text.replaceAll(',', '.')) ?? 0 as num).toDouble(),
               dataDespesa: Helper.parseDateTime(dataDespesaController.text ),
               competenciaMes: Helper.parseDateTime("10/"+competenciaMesController.text)
             );

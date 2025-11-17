@@ -32,6 +32,10 @@ class AptoRepository {
     final json = repositoryHelper.parseToJson(aptoAtualizado);
     final response = await client.put(
       Uri.parse(uriApto),
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+      },
       body: json
     );
     final jsonRaw = response.body;
