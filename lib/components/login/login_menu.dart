@@ -1,6 +1,6 @@
 import 'package:alugueis_app/components/login/login_button.dart';
 import 'package:alugueis_app/components/menu/menu.dart';
-import 'package:alugueis_app/services/Login_Service.dart';
+import 'package:alugueis_app/store/usuario_store.dart';
 import 'package:flutter/material.dart';
 
 class LoginMenu extends StatefulWidget {
@@ -19,10 +19,10 @@ class _LoginMenuState extends State<LoginMenu> {
   }
 
   void _checkFirstAccess() async {
-    final service = LoginService();
-    // bool exists = await service.ExisteUsuario();
+    final usuarioStore = UsuarioStore();
+    bool exists = await usuarioStore.ExisteUsuario();
     setState(() {
-      showRegister = false;
+      showRegister = !exists;
     });
   }
 
